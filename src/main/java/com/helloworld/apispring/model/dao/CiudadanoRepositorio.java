@@ -25,7 +25,7 @@ public class CiudadanoRepositorio {
         this.sessionFactory = sessionFactory;
     }
 
-    public Integer crearCiudadano(Ciudadano ciudadano) {
+    public Integer createCitizen(Ciudadano ciudadano) {
         getSessionFactory().getCurrentSession().save(ciudadano);
         return ciudadano.getId();
     }

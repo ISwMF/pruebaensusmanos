@@ -19,8 +19,8 @@ public class CiudadanoServicio {
         return ciudadanoRepositorio.getAllCitizen();
     }
 
-    public Integer crearCiudadano(Ciudadano ciudadano) {
-        return ciudadanoRepositorio.crearCiudadano(ciudadano);
+    public Integer createCitizen(Ciudadano ciudadano) {
+        return ciudadanoRepositorio.createCitizen(ciudadano);
     }
 
     public Ciudadano getCitizenByID(int id) {

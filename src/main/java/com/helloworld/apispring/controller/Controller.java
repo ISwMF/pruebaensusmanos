@@ -27,9 +27,9 @@ public class Controller {
         return new ResponseEntity<List<Ciudadano>>(equipos, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/ciudadanos/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @RequestMapping(value = "/ciudadanos/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> crearCiudadano(@RequestBody Ciudadano ciudadano) {
-        String resultado = "Se creo persona con ID: " + ciudadanoServicio.crearCiudadano(ciudadano);
+        String resultado = "Se creo persona con ID: " + ciudadanoServicio.createCitizen(ciudadano);
         return new ResponseEntity<String>(resultado, HttpStatus.OK);
     }
 

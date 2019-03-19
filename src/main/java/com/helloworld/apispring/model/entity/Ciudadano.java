@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.helloworld.apispring.model.entity;
 
 import java.util.List;
@@ -21,7 +16,7 @@ import javax.persistence.Table;
 public class Ciudadano {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column(name = "id_ciudadano")
     private Integer id;
 
@@ -31,8 +26,8 @@ public class Ciudadano {
     @Column(name = "puntos_ciudadano")
     private Integer puntos;
 
-//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "ciudadanoX", cascade = CascadeType.ALL)
-//    private List<Reporte> reportes;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "ciudadano", cascade = CascadeType.ALL)
+    private List<Reporte> reportes;
 
     public Ciudadano() {
     }
@@ -61,11 +56,11 @@ public class Ciudadano {
         this.puntos = puntos;
     }
 
-//    public List<Reporte> getReportes() {
-//        return reportes;
-//    }
-//
-//    public void setReportes(List<Reporte> reportes) {
-//        this.reportes = reportes;
-//    }
+    public List<Reporte> getReportes() {
+        return reportes;
+    }
+
+    public void setReportes(List<Reporte> reportes) {
+        this.reportes = reportes;
+    }
 }

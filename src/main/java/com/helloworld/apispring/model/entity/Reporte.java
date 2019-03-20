@@ -1,17 +1,18 @@
 package com.helloworld.apispring.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import org.springframework.transaction.annotation.Transactional;
 
 @Entity
@@ -19,69 +20,69 @@ import org.springframework.transaction.annotation.Transactional;
 public class Reporte {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_reporte")
-    private Integer id;
+    private Integer reporteId;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "fecha_reporte")
-    private Date Fecha;
+    private Date fecha;
 
     @Column(name = "lugar_reporte")
-    private String Lugar;
+    private String lugar;
 
     @Column(name = "situacion_reporte")
-    private String Situacion;
+    private String situacion;
 
     @Column(name = "puntos_reporte")
-    private Integer Puntos;
+    private String puntos;
 
     @ManyToOne
     @JoinColumn(name = "id_ciudadano")
+    @JsonBackReference
     private Ciudadano ciudadano;
 
-    public Reporte() {
+    @Transient
+    private int idCiudadano;
 
+    public Integer getReporteId() {
+        return reporteId;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public void setReporteId(Integer reporteId) {
+        this.reporteId = reporteId;
     }
 
     public Date getFecha() {
-        return Fecha;
+        return fecha;
     }
 
-    public void setFecha(Date Fecha) {
-        this.Fecha = Fecha;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     public String getLugar() {
-        return Lugar;
+        return lugar;
     }
 
-    public void setLugar(String Lugar) {
-        this.Lugar = Lugar;
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
     }
 
     public String getSituacion() {
-        return Situacion;
+        return situacion;
     }
 
-    public void setSituacion(String Situacion) {
-        this.Situacion = Situacion;
+    public void setSituacion(String situacion) {
+        this.situacion = situacion;
     }
 
-    public Integer getPuntos() {
-        return Puntos;
+    public String getPuntos() {
+        return puntos;
     }
 
-    public void setPuntos(Integer Puntos) {
-        this.Puntos = Puntos;
+    public void setPuntos(String puntos) {
+        this.puntos = puntos;
     }
 
     public Ciudadano getCiudadano() {
@@ -90,6 +91,14 @@ public class Reporte {
 
     public void setCiudadano(Ciudadano ciudadano) {
         this.ciudadano = ciudadano;
+    }
+
+    public int getIdCiudadano() {
+        return idCiudadano;
+    }
+
+    public void setIdCiudadano(int idCiudadano) {
+        this.idCiudadano = idCiudadano;
     }
 
 }

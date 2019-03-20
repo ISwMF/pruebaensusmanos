@@ -1,6 +1,8 @@
 package com.helloworld.apispring.model.dao;
 
 import com.helloworld.apispring.model.entity.Ciudadano;
+import com.helloworld.apispring.model.entity.Reporte;
+import com.helloworld.apispring.model.entity.Login;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
@@ -45,6 +47,16 @@ public class CiudadanoRepositorio {
         Criteria criteria = getSessionFactory().getCurrentSession().createCriteria(Ciudadano.class);
         criteria.addOrder(Order.desc("puntos"));
         return criteria.list();
+    }
+    
+    public long createReport(Reporte reporte){
+        getSessionFactory().getCurrentSession().save(reporte);
+        return reporte.getReporteId();
+    }
+    
+    public long createLogin(Login login){
+        getSessionFactory().getCurrentSession().save(login);
+        return login.getId();
     }
 
 }

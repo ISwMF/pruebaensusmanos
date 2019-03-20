@@ -1,5 +1,6 @@
 package com.helloworld.apispring.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,7 +17,7 @@ import javax.persistence.Table;
 public class Ciudadano {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_ciudadano")
     private Integer id;
 
@@ -26,7 +27,8 @@ public class Ciudadano {
     @Column(name = "puntos_ciudadano")
     private Integer puntos;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "ciudadano", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "ciudadano", cascade = CascadeType.REMOVE)
+    @JsonManagedReference
     private List<Reporte> reportes;
 
     public Ciudadano() {

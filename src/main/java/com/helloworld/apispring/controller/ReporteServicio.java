@@ -6,6 +6,7 @@
 package com.helloworld.apispring.controller;
 
 import com.helloworld.apispring.model.dao.CiudadanoRepositorio;
+import com.helloworld.apispring.model.dao.ReporteRepositorio;
 import com.helloworld.apispring.model.entity.Reporte;
 import com.helloworld.apispring.model.entity.Ciudadano;
 import java.util.List;
@@ -17,6 +18,9 @@ public class ReporteServicio {
     @Autowired
     private CiudadanoRepositorio ciudadanoRepositorio;
 
+    @Autowired
+    private ReporteRepositorio reporteRepositorio;
+
     public ReporteServicio() {
     }
     
@@ -24,5 +28,9 @@ public class ReporteServicio {
         Ciudadano ciudadano = ciudadanoRepositorio.getCitizenByID(reporte.getIdCiudadano());
         reporte.setCiudadano(ciudadano);
         return ciudadanoRepositorio.createReport(reporte);
+    }
+
+    public List<Reporte> getAllReportsByCitizen(int id) {
+        return reporteRepositorio.getAllReportsByCitizen(id);
     }
 }

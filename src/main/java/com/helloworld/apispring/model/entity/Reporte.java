@@ -16,7 +16,7 @@ import javax.persistence.Transient;
 import org.springframework.transaction.annotation.Transactional;
 
 @Entity
-@Table(name = "reportes")
+@Table(name = "reporte")
 public class Reporte {
 
     @Id

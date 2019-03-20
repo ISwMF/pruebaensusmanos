@@ -25,7 +25,7 @@ public class Controller {
 
     @Autowired
     private ReporteServicio reporteServicio;
-    
+
     @Autowired
     private LoginServicio loginServicio;
 
@@ -58,12 +58,17 @@ public class Controller {
         String resultado = "Se creo reporte con ID :" + reporteServicio.createReport(reporte);
         return new ResponseEntity<String>(resultado, HttpStatus.OK);
     }
-    
-//    @RequestMapping(value = "/ciudadanos/{id}/reportes", method = RequestMethod.GET)
-//    public ResponseEntity<List<Reporte>> obtenerReportesDeUnCiudadano(@PathVariable("id") int id) {
-//        Ciudadano ciudadano = ciudadanoServicio.getCitizenByID(id);
-//        return new ResponseEntity<Ciudadano>(ciudadano, HttpStatus.OK);
-//    }
-    
-    
+
+    @RequestMapping(value = "/logins/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> crearLogin(@RequestBody Login login) {
+        String resultado = "Se creo login con ID :" + loginServicio.createLogin(login);
+        return new ResponseEntity<String>(resultado, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/ciudadanos/{id}/reportes", method = RequestMethod.GET)
+    public ResponseEntity<List<Reporte>> obtenerReportesDeUnCiudadano(@PathVariable("id") int id) {
+        List<Reporte> reportes = reporteServicio.getAllReportsByCitizen(id);
+        return new ResponseEntity<List<Reporte>>(reportes, HttpStatus.OK);
+    }
+
 }

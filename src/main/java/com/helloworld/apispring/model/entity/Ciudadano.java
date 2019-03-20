@@ -27,9 +27,13 @@ public class Ciudadano {
     @Column(name = "puntos_ciudadano")
     private Integer puntos;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "ciudadano", cascade = CascadeType.REMOVE)
-    @JsonManagedReference
-    private List<Reporte> reportes;
+//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "ciudadano", cascade = CascadeType.REMOVE)
+//    @JsonManagedReference
+//    private List<Reporte> reportes;
+//    
+//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "ciudadano", cascade = CascadeType.REMOVE)
+//    @JsonManagedReference
+//    private List<Login> logins;
 
     public Ciudadano() {
     }
@@ -58,11 +62,21 @@ public class Ciudadano {
         this.puntos = puntos;
     }
 
-    public List<Reporte> getReportes() {
-        return reportes;
-    }
-
-    public void setReportes(List<Reporte> reportes) {
-        this.reportes = reportes;
-    }
+//    public List<Reporte> getReportes() {
+//        return reportes;
+//    }
+//
+//    public void setReportes(List<Reporte> reportes) {
+//        this.reportes = reportes;
+//    }
+//
+//    public List<Login> getLogins() {
+//        return logins;
+//    }
+//
+//    public void setLogins(List<Login> logins) {
+//        this.logins = logins;
+//    }
+    
+    
 }

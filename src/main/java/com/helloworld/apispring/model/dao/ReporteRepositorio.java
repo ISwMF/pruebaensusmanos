@@ -24,9 +24,16 @@ public class ReporteRepositorio {
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
-    
-    public long crearReporte(Reporte reporte){
+
+    public long crearReporte(Reporte reporte) {
         getSessionFactory().getCurrentSession().save(reporte);
         return reporte.getReporteId();
+    }
+
+    public List<Reporte> getAllReportsByCitizen(int id) {
+        Criteria criteria = getSessionFactory().getCurrentSession().createCriteria(Reporte.class);
+        criteria.createAlias("ciudadano", "c");
+        criteria.add(Restrictions.eq("c.id", id));
+        return criteria.list();
     }
 }
